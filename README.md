@@ -33,7 +33,19 @@ At a high level:
 
 Flow:
 
-Client → Socket → Thread → Parser → KVStore → Response
+Client (nc / telnet / python)
+        ↓
+TCP Socket (port 8080)
+        ↓
+TCPServer (accept + thread spawn)
+        ↓
+Thread (per client)
+        ↓
+Command Parser (stringstream)
+        ↓
+KVStore (shared, mutex protected)
+        ↓
+In-Memory HashMap (unordered_map)
 
 ---
 
@@ -118,3 +130,6 @@ If I continue this:
 ## Author
 
 Suraj Verma
+
+
+<img width="1916" height="1005" alt="image" src="https://github.com/user-attachments/assets/58215108-b3bf-4fd1-9152-a61d17c9ac9a" />
