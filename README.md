@@ -34,17 +34,17 @@ At a high level:
 Flow:
 
 Client (nc / telnet / python)
-        ↓
+        -->
 TCP Socket (port 8080)
-        ↓
+        -->
 TCPServer (accept + thread spawn)
-        ↓
+        -->
 Thread (per client)
-        ↓
+        -->
 Command Parser (stringstream)
-        ↓
+        -->
 KVStore (shared, mutex protected)
-        ↓
+        -->
 In-Memory HashMap (unordered_map)
 
 ---
